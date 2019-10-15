@@ -7,6 +7,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: #000000;
 }
+.navbar-brand {
+  color: #FF5722;
+}
+.site-header .navbar-nav .nav-link {
+  color: #020202;
+}
 
 ul {
   margin: 0;
