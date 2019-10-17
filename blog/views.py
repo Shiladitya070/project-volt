@@ -12,7 +12,7 @@ def home(request):
 
     return render(request,'blog/Home.html',context)
 
-class PostListView(ListView):
+class PostListView(LoginRequiredMixin,ListView):
     model = Post
     template_name = 'blog/home.html'
     context_object_name = 'posts'
