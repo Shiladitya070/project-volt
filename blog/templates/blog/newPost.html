@@ -6,11 +6,6 @@
 <script src="{% static 'blog/js/tiny.js' %}"></script>
 
 <div class="container pt-5">
-    {% if form.errors %}
-        <p style="color: red;">
-            Please correct the error{{ form.errors|pluralize }} below.
-        </p>
-    {% endif %}
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
