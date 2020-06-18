@@ -1,0 +1,36 @@
+{% extends "blog/Base.html"%}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'blog/js/tiny.js' %}"></script>
+
+<div class="container pt-5">
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" value="{{ post.title }}" placeholder="Add title">
+        </div>
+        <div class="form-group">
+            <label>content</label>
+            <textarea type="text" rows="20" class="form-control" id='id_content' name="content"
+                placeholder="Add description">{{ post.content }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Tags</label>
+            <input type="text" data-role="tagsinput" class="form-control"
+                value="{% for tag in post.tags.all %}{{ tag }},{% endfor %}" name="tags">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <p>Common Tags:
+        {% for mt in common_tags %}
+        <a href="{% url 'tagged' mt.slug %}" class="badge badge-success">{{mt}}</a>
+        {% endfor %}
+    </p>
+</div>
+
+
+{%endblock content%}

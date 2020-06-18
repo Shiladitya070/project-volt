@@ -1,24 +1,36 @@
 {% extends "blog/Base.html" %}
+{% load static %}
 {% block content %}
-<h1>Home</h1>
 
-<article class="media content-section">
-    <div class="media-body">
-        <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
+
+<header class="masthead" style="background-image: url('{% static 'blog/img/post-bg.jpg' %} ')">
+    <!-- <div class="overlay"></div> -->
+    <div class="post-heading">
+        <h1>{{ object.title }}</h1>
+        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+        <span class="meta">Posted by
+            <a href="#">Start Bootstrap</a>
+            on August 24, 2019</span>
+    </div>
+</header>
+<div class="container ">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+            <h2>{{ post.title }}</h2>
+            {{ post.content|safe }}
+            <!-- <a href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
             <small class="text-muted">{{ object.date_posted }}</small>
             {% if object.author == user %}
             <div>
                 <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
                 <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">delete</a>
-            </div>
+            </div> -->
 
             {% endif %}
-
         </div>
-        <h2 class="article-title">{{ object.title }}</h2>
-        <p class="article-content">{{ object.content }}</p>
     </div>
-</article>
+</div>
+
 
 {% endblock content %}
