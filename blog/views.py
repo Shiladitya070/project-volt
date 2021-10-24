@@ -16,7 +16,7 @@ def home(request):
         'posts': Post.objects.all(),
     }
 
-    return render(request, 'blog/Home.html', context)
+    return render(request, 'blog/home.html', context)
 
 
 def NewPost(request):
@@ -39,7 +39,7 @@ def NewPost(request):
         'common_tags': common_tags,
         'form': form,
     }
-    return render(request, 'blog/newPost.html', context)
+    return render(request, 'blog/post-new.html', context)
 
 
 class PostListView(ListView):
@@ -66,8 +66,7 @@ def get_user_profile(request, username):
 
     return render(request, 'users/profiles.html', {"p_user": user})
 
-# class PostDetailView(DetailView):
-#     model = Post
+
 
 
 def detail(request, slug):
