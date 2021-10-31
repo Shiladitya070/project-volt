@@ -19,7 +19,7 @@ def home(request):
     return render(request, 'blog/home.html', context)
 
 
-def NewPost(request):
+def new_post(request):
     common_tags = Post.tags.most_common()[:4]
     form = PostForm(request.POST)
     print(form.errors)
@@ -42,7 +42,7 @@ def NewPost(request):
     return render(request, 'blog/post-new.html', context)
 
 
-class PostListView(ListView):
+class post_list_view(ListView):
     model = Post
     template_name = 'blog/home.html'
     context_object_name = 'posts'
@@ -50,7 +50,7 @@ class PostListView(ListView):
     paginate_by = 5
 
 
-class UserPostListView(ListView):
+class user_list_view(ListView):
     model = Post
     template_name = 'blog/user_posts.html'
     context_object_name = 'posts'
